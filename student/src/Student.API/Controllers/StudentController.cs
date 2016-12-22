@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Student.Service;
+using Student.API.ViewModels;
 
 namespace Student.API.Controllers
 {
@@ -33,19 +34,19 @@ namespace Student.API.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]Data.Student value)
+        public void Post([FromBody]AddStudentVm value)
         {
-            _studentSvc.SaveStudent(value);
+            _studentSvc.SaveStudent(value.ToStudent());
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(Guid id, [FromBody]Data.Student value)
+        public void Put(Guid id, [FromBody]UpdateStudentVm value)
         {
             if (id != value.Id)
                 BadRequest();
 
-            _studentSvc.SaveStudent(value);
+            _studentSvc.SaveStudent(value.ToStudent());
         }
 
         // DELETE api/values/5

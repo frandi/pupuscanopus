@@ -60,11 +60,14 @@ namespace Student.Repository
             {
                 item = _db.Students.Find(id);
 
-                string key = StudentCache.GetSingleStudentKey(item.Id);
-                string value = JsonConvert.SerializeObject(item);
-                _cache.SetString(key, value);
+                if (item != null)
+                {
+                    string key = StudentCache.GetSingleStudentKey(item.Id);
+                    string value = JsonConvert.SerializeObject(item);
+                    _cache.SetString(key, value);
+                }
             }
-
+            
             return item;
         }
 
