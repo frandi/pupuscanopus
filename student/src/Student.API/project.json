@@ -20,7 +20,8 @@
     "Student.Data": "1.0.0-*",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
     "Student.Data.Database": "1.0.0-*",
-    "Student.Service": "1.0.0-*"
+    "Student.Service": "1.0.0-*",
+    "Swashbuckle": "6.0.0-beta902"
   },
 
   "tools": {

@@ -40,12 +40,13 @@ namespace Student.API
                 options.Configuration = Configuration.GetConnectionString("RedisConnection");
                 options.InstanceName = "master";
             });
+            
+            services.AddTransient<IStudentRepository, StudentRepository>();
+            services.AddTransient<IStudentService, StudentService>();
 
             // Add framework services.
             services.AddMvc();
-
-            services.AddTransient<IStudentRepository, StudentRepository>();
-            services.AddTransient<IStudentService, StudentService>();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +56,9 @@ namespace Student.API
             loggerFactory.AddDebug();
 
             app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUi();
         }
     }
 }
