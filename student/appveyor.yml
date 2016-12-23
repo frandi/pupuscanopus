@@ -1,0 +1,12 @@
+version: 1.0.{build}
+configuration: Debug
+pull_requests:
+  do_not_increment_build_number: true
+branches:
+  only:
+  - master
+build_script:
+- cmd: >-
+    dotnet restore
+
+    dotnet build .\src\Student.API\project.json
