@@ -3,7 +3,7 @@ configuration: Debug
 environment: 
   SolutionDir: $(APPVEYOR_BUILD_FOLDER)\ 
   matrix:
-  - project_name: student/Student.sln
+  - project_name: student
 pull_requests:
   do_not_increment_build_number: true
 branches:
