@@ -1,0 +1,16 @@
+version: 1.0.{build}
+configuration: Debug
+environment: 
+  SolutionDir: $(APPVEYOR_BUILD_FOLDER)\ 
+  matrix:
+  - project_name: student/Student.sln
+pull_requests:
+  do_not_increment_build_number: true
+branches:
+  only:
+  - master
+before_build:
+- echo %project_name%
+- dotnet restore %project_name%
+build:
+  verbosity: minimal
