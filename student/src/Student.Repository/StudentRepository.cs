@@ -1,15 +1,16 @@
-﻿using Student.Data.Database;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Student.Data;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
+using SharedLibs.Repositories;
+using model = SharedLibs.Data;
 
 namespace Student.Repository
 {
-    public class StudentRepository: BaseRepository, IStudentRepository
+    public class StudentRepository: BaseRepository<StudentDbContext>, IStudentRepository
     {
         public StudentRepository(StudentDbContext db, IDistributedCache cache)
             :base(db, cache)
@@ -17,7 +18,7 @@ namespace Student.Repository
 
         }
 
-        public void Add(Data.Student item)
+        public void Add(model.Student item)
         {
             _db.Students.Add(item);
             _db.SaveChanges();
@@ -42,18 +43,18 @@ namespace Student.Repository
             return item != null;
         }
 
-        public IEnumerable<Data.Student> GetAll()
+        public IEnumerable<model.Student> GetAll()
         {
             return _db.Students;
         }
 
-        public Data.Student GetById(Guid id)
+        public model.Student GetById(Guid id)
         {
-            Data.Student item = null;
+            model.Student item = null;
             string cachedItem = _cache.GetString(StudentCache.GetSingleStudentKey(id));
             if (!string.IsNullOrEmpty(cachedItem))
             {
-                item = JsonConvert.DeserializeObject<Data.Student>(cachedItem);
+                item = JsonConvert.DeserializeObject<model.Student>(cachedItem);
             }
 
             if(item == null)
@@ -71,7 +72,7 @@ namespace Student.Repository
             return item;
         }
 
-        public void Update(Data.Student item)
+        public void Update(model.Student item)
         {
             var dbItem = _db.Students.Find(item.Id);
             if(dbItem != null)

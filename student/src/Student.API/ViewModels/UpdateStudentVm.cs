@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using model = SharedLibs.Data;
 
 namespace Student.API.ViewModels
 {
@@ -13,9 +14,9 @@ namespace Student.API.ViewModels
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
 
-        public Data.Student ToStudent()
+        public model.Student ToStudent()
         {
-            var student = new Data.Student();
+            var student = new model.Student();
             student.Id = Id;
             student.Code = Code;
             student.FirstName = FirstName;

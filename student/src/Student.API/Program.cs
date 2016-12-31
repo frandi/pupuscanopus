@@ -17,6 +17,7 @@ namespace Student.API
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseUrls("http://localhost:8931")
                 .Build();
 
             host.Run();

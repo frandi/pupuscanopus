@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Student.Data;
+using model = SharedLibs.Data;
+using SharedLibs.Services;
 
 namespace Student.Service
 {
@@ -16,12 +18,12 @@ namespace Student.Service
             _studentRepo = studentRepo;
         }
 
-        public Data.Student GetStudent(Guid id)
+        public model.Student GetStudent(Guid id)
         {
             return _studentRepo.GetById(id);
         }
 
-        public IEnumerable<Data.Student> GetStudents()
+        public IEnumerable<model.Student> GetStudents()
         {
             return _studentRepo.GetAll();
         }
@@ -31,7 +33,7 @@ namespace Student.Service
             _studentRepo.Delete(id);
         }
 
-        public void SaveStudent(Data.Student student)
+        public void SaveStudent(model.Student student)
         {
             if (_studentRepo.Exists(student.Id))
                 _studentRepo.Update(student);

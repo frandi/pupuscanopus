@@ -3,20 +3,21 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Student.Data.Database;
+using Student.Data;
 
-namespace Student.Data.Database.Migrations
+namespace Student.Data.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
-    partial class StudentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161231055401_AddDateTimeDefaultValue")]
+    partial class AddDateTimeDefaultValue
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Student.Data.Student", b =>
+            modelBuilder.Entity("SharedLibs.Data.Student", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Student.Data.Database.Migrations
+namespace Student.Data.Migrations
 {
-    public partial class AddStudentEntity : Migration
+    public partial class InitStudentDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,11 +14,11 @@ namespace Student.Data.Database.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Code = table.Column<string>(nullable: false),
-                    Created = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()"),
+                    Created = table.Column<DateTime>(nullable: false),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
                     FirstName = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: false),
-                    Updated = table.Column<DateTime>(nullable: true, defaultValueSql: "getdate()")
+                    Updated = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {

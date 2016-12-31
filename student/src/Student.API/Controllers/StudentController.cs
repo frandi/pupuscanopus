@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Student.Service;
 using Student.API.ViewModels;
+using SharedLibs.Services;
+using model = SharedLibs.Data;
 
 namespace Student.API.Controllers
 {
@@ -20,14 +22,14 @@ namespace Student.API.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<Data.Student> Get()
+        public IEnumerable<model.Student> Get()
         {
             return _studentSvc.GetStudents();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public Data.Student Get(Guid id)
+        public model.Student Get(Guid id)
         {
             return _studentSvc.GetStudent(id);
         }

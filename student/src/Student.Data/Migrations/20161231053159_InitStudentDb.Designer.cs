@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Student.Data.Database;
+using Student.Data;
 
-namespace Student.Data.Database.Migrations
+namespace Student.Data.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
-    [Migration("20161219131850_AddStudentEntity")]
-    partial class AddStudentEntity
+    [Migration("20161231053159_InitStudentDb")]
+    partial class InitStudentDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -17,7 +17,7 @@ namespace Student.Data.Database.Migrations
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Student.Data.Student", b =>
+            modelBuilder.Entity("SharedLibs.Data.Student", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -26,8 +26,7 @@ namespace Student.Data.Database.Migrations
                         .IsRequired();
 
                     b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("getdate()");
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DateOfBirth");
 
@@ -38,8 +37,7 @@ namespace Student.Data.Database.Migrations
                         .IsRequired();
 
                     b.Property<DateTime?>("Updated")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasDefaultValueSql("getdate()");
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.HasKey("Id");
 

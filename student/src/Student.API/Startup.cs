@@ -8,9 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Student.Data.Database;
+using Student.Data;
 using Student.Service;
 using Student.Repository;
+using SharedLibs.Services;
 
 namespace Student.API
 {
