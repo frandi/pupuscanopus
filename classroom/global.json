@@ -1,0 +1,6 @@
+{
+  "projects": [ "src", "test", "../shared-libs/src" ],
+  "sdk": {
+    "version": "1.0.0-preview4-004233"
+  }
+}
