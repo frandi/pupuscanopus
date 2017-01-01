@@ -7,6 +7,7 @@ using SharedLibs.Data;
 using System.Net.Http;
 using Newtonsoft.Json;
 using SharedLibs.Configs;
+using Microsoft.Extensions.Options;
 
 namespace SharedLibs.MicroServices
 {
@@ -14,9 +15,9 @@ namespace SharedLibs.MicroServices
     {
         private MicroServiceConfig _config;
 
-        public StudentService(MicroServiceConfig config)
+        public StudentService(IOptions<MicroServiceConfig> config)
         {
-            _config = config;
+            _config = config.Value;
         }
 
         public void DeleteStudent(Guid id)

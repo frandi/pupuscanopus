@@ -8,9 +8,11 @@ namespace SharedLibs.Services
     public interface IClassroomService
     {
         void CreateSchool(Data.School school);
+        IEnumerable<Data.School> GetSchools();
         Data.School GetSchool(Guid id);
 
         void CreateClassroom(Data.Classroom classroom);
+        IEnumerable<Data.Classroom> GetClassrooms();
         Data.Classroom GetClassroom(Guid id);
 
         void AddStudentToClassroom(Data.ClassroomStudent classStudent);
